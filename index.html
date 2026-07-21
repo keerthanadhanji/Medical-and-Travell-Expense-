@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medical & Travel Expense Request</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+<div class="mainBlock">
+  <header class="page-header">
+    <div class="header-left">
+      <img src="logo.jpeg" alt="" class="logo-mark">
+      <div class="org-address">
+        333 Broadway<br>
+        Winnipeg, MB R3C 4W3<br>
+        Phone: (204) 954-4321<br>
+        Toll Free: 1-855-954-4321<br>
+        wcb.mb.ca
+      </div>
+    </div>
+    <div class="header-right">
+      <h1>Medical &amp; Travel Expense Request</h1>
+      <div class="claim-box">
+        <label for="claimNo">Claim No.</label>
+        <input type="text" id="claimNo" placeholder="e.g. 20042047">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro">
+      <input type="text" id="workerName" placeholder="Worker full name" class="inline-input">
+      requested reimbursement for the following medical and/or travel expenses:
+    </p>
+
+    <!-- ===================== SAVE STATUS ===================== -->
+    <div id="saveStatus" class="save-status" aria-live="polite"></div>
+
+    <!-- ===================== 1. PRESCRIPTION DRUGS ===================== -->
+    <section class="form-section" data-section="prescriptionDrugs">
+      <h2>Prescription Drugs</h2>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Prescription Date</th>
+            <th>Date Purchased</th>
+            <th>Healthcare Provider Name</th>
+            <th>Paid Amount ($)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add Prescription Drug</button>
+    </section>
+
+    <!-- ===================== 2. OVER-THE-COUNTER DRUGS ===================== -->
+    <section class="form-section" data-section="otcDrugs">
+      <h2>Over-the-Counter Drugs</h2>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Date Purchased</th>
+            <th>Paid Amount ($)</th>
+            <th>Seller's Name</th>
+            <th>Reason for Purchasing</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add OTC Drug</button>
+    </section>
+
+    <!-- ===================== 3. MEDICAL SUPPLIES ===================== -->
+    <section class="form-section" data-section="medicalSupplies">
+      <h2>Bandages, Braces or Other Medical Supplies</h2>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Item Purchased</th>
+            <th>Date Purchased</th>
+            <th>Was this Prescribed?</th>
+            <th>Healthcare Provider Name</th>
+            <th>Paid Amount ($)</th>
+            <th>Seller's Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add Medical Supply</button>
+    </section>
+
+    <!-- ===================== 4. PARKING ===================== -->
+    <section class="form-section" data-section="parking">
+      <h2>Parking for Medical Appointments</h2>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Date</th>
+            <th>Paid Amount ($)</th>
+            <th>Meter Used?</th>
+            <th>Meter Number</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add Parking Expense</button>
+    </section>
+
+    <!-- ===================== 5. MILEAGE ===================== -->
+    <section class="form-section" data-section="mileage">
+      <h2>Mileage to Medical Appointments</h2>
+      <p class="section-note">
+        The WCB will generally reimburse only those transportation costs which are in excess of
+        costs that would be incurred by the worker while travelling to and from work.
+      </p>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Appointment Date</th>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Address of Workplace</th>
+            <th>Number of km (Round Trip)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add Mileage Entry</button>
+    </section>
+
+    <!-- ===================== 6. BUS OR TAXI FARE ===================== -->
+    <section class="form-section" data-section="fare">
+      <h2>Bus or Taxi Fare for Medical Appointments <span class="asterisk">*</span></h2>
+      <p class="section-note">*Note: Pre-approval is required from your WCB representative to claim taxi fare(s).</p>
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Appointment Date</th>
+            <th>Address of Starting Point</th>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Bus or Taxi</th>
+            <th>Total Fare Paid ($)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody data-rows></tbody>
+      </table>
+      </div>
+      <button type="button" class="add-row-btn" data-add>+ Add Fare</button>
+    </section>
+
+    <!-- ===================== TOTAL + PRIVACY + SUBMIT ===================== -->
+    <section class="summary-section">
+      <div class="total-line">
+        <span>Total requested:</span>
+        <span id="totalAmount">$0.00</span>
+      </div>
+
+      <label class="privacy-check">
+        <input type="checkbox" id="privacyAgree">
+        I understand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the
+        personal information collected in this document.
+      </label>
+
+      <div class="action-row">
+        <button type="button" id="submitBtn" class="submit-btn">Submit Request</button>
+        <button type="button" id="clearBtn" class="clear-btn">Clear All Saved Data</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    Data is saved automatically in this browser only. Nothing is sent anywhere.
+  </footer>
+
+</div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
